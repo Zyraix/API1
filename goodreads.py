@@ -4,6 +4,9 @@ import json
 import requests
 import xmltodict
 
+#Video Link:
+#https://www.youtube.com/watch?v=TDQ2jVtqM6Q&feature=youtu.be&ab_channel=Zyraix
+
 while True:
     #Show text and ask for input of the a book to look for.
     print("Find your book by title, author or ISBN")
@@ -22,12 +25,6 @@ while True:
 
     #API url samenbrengen
     url = main_api + urllib.parse.urlencode({"key":key,"q":book}) 
-
-    #Text showing the link to the XML file
-    #print("Data for the following URL: " + url)
-
-    #Json output opslagen
-    json_data = json.dumps(url)
  
     #Save XML file from URL
     response = requests.get(url)
@@ -53,7 +50,6 @@ while True:
         
             #print(data['GoodreadsResponse']['search']['results']['work'])
             print("=========================Results Found=========================")
-            
             for x in range(10):
                 if data != "":
                     print(data['GoodreadsResponse']['search']['results']['work'][x]['best_book']['title'])
